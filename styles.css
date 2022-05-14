@@ -1,0 +1,63 @@
+.container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.toolbar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+img {
+    max-width: 75px;
+}
+
+.modal {
+    display: flex;
+    gap: 8px;
+}
+
+.colorPickerCanvas {
+    position: relative;
+    align-self: flex-start;
+}
+
+.colorPickerWrapper {
+    position: relative;
+    height: 300px;
+    display: flex;
+}
+
+.colorPickerMarker {
+    position: absolute; 
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    width: 8px;
+    height: 8px;
+}
+
+.colorSliderWrapper {
+    position: relative;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.colorSlider {
+    align-self: flex-start;
+}
+
+.colorSliderMarker {
+    position: absolute; 
+    background-color: rgba(255, 255, 255, 0);
+    border-style: solid;
+    width: 40px;
+    height: 4px;
+}
