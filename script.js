@@ -1,3 +1,21 @@
+const colorPickerIcon = document.querySelector('img[src= "images/color-selection.png"]');
+colorPickerIcon.classList.add('colorPickerIcon');
+
+const modal = document.querySelector('.modal')
+
+colorPickerIcon.addEventListener('click', () => {
+  if (modal.classList.contains('active')) {hideColorPicker()}
+  else {showColorPicker()}
+});
+
+function showColorPicker() {
+  modal.classList.add('active');
+}
+
+function hideColorPicker() {
+  modal.classList.remove('active');
+}
+
 const container = document.querySelector('.container');
 
 const colorPickerCanvas = document.querySelector('.colorPickerCanvas');
@@ -43,18 +61,19 @@ colorPickerCanvas.addEventListener('click', (event) => {
   //GET THE COORDINATES OF CLICKED PIXEL
   let xCoordinates = event.offsetX;
   let yCoordinates = event.offsetY;
+  if (modal.classList.contains('active')) {
+    //GET RGB VALUES OF CLICKED PIXEL
+    let imgData = colorPickerCtx.getImageData(xCoordinates, yCoordinates, 1, 1);
+    ctxR = imgData.data[0];
+    ctxG = imgData.data[1];
+    ctxB = imgData.data[2];
 
-  //GET RGB VALUES OF CLICKED PIXEL
-  let imgData = colorPickerCtx.getImageData(xCoordinates, yCoordinates, 1, 1);
-  ctxR = imgData.data[0];
-  ctxG = imgData.data[1];
-  ctxB = imgData.data[2];
+    //PLACE MARKER WHERE MOUSE IS CLICKED ON CANVAS
+    colorPickerMarker.style.top =  event.offsetY - 8 + 'px';
+    colorPickerMarker.style.left = event.offsetX - 8 + 'px';
 
-  //PLACE MARKER WHERE MOUSE IS CLICKED ON CANVAS
-  colorPickerMarker.style.top =  event.offsetY - 8 + 'px';
-  colorPickerMarker.style.left = event.offsetX - 8 + 'px';
-
-  document.body.style.backgroundColor = `rgb(${ctxR}, ${ctxG}, ${ctxB})`;
+    document.body.style.backgroundColor = `rgb(${ctxR}, ${ctxG}, ${ctxB})`;
+  };
 });
 
 document.addEventListener('mouseup', () => {
@@ -69,7 +88,7 @@ colorPickerMarker.addEventListener('mousedown', (event) => {
 
 colorPickerCanvas.addEventListener('mousemove', (event) => {
     event.preventDefault();
-    if (dragging) {
+    if (dragging && modal.classList.contains('active')) {
       colorPickerMarker.style.top = event.offsetY - 8 + 'px';
       colorPickerMarker.style.left = event.offsetX - 8 + 'px';
 
