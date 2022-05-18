@@ -3,18 +3,26 @@ colorPickerIcon.classList.add('colorPickerIcon');
 
 const modal = document.querySelector('.modal')
 
-colorPickerIcon.addEventListener('click', () => {
-  if (modal.classList.contains('active')) {hideColorPicker()}
-  else {showColorPicker()}
-});
+//document.addEventListener('click', hideModal)
 
-function showColorPicker() {
-  modal.classList.add('active');
-}
+colorPickerIcon.addEventListener('click', toggleModal)
 
-function hideColorPicker() {
-  modal.classList.remove('active');
-}
+function modalIsActive() {
+  return modal.classList.contains('active')
+};
+
+function showModal() {
+ return modal.classList.add('active');
+};
+
+function hideModal() {
+  if(modalIsActive()) return modal.classList.remove('active');
+};
+
+function toggleModal() {
+  if(modalIsActive()) {return hideModal()}
+  else {return showModal()};
+};
 
 const container = document.querySelector('.container');
 
