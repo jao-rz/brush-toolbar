@@ -1,14 +1,24 @@
+const container = document.querySelector('.container');
+
 const colorPickerIcon = document.querySelector('img[src= "images/color-selection.png"]');
 colorPickerIcon.classList.add('colorPickerIcon');
 
+const modalWrapper = document.querySelector('.modalWrapper')
+
 const modal = document.querySelector('.modal')
 
-//document.addEventListener('click', hideModal)
+modalWrapper.addEventListener('click', (e)=>{
+  if(eventOutisdeModal(e) && modalIsActive()) {hideModal()};
+});
 
-colorPickerIcon.addEventListener('click', toggleModal)
+colorPickerIcon.addEventListener('click', toggleModal);
+
+function eventOutisdeModal(e) {
+  return modal.contains(e.target) == false;
+}
 
 function modalIsActive() {
-  return modal.classList.contains('active')
+  return modal.classList.contains('active');
 };
 
 function showModal() {
@@ -16,15 +26,13 @@ function showModal() {
 };
 
 function hideModal() {
-  if(modalIsActive()) return modal.classList.remove('active');
+  return modal.classList.remove('active');
 };
 
 function toggleModal() {
   if(modalIsActive()) {return hideModal()}
   else {return showModal()};
 };
-
-const container = document.querySelector('.container');
 
 const colorPickerCanvas = document.querySelector('.colorPickerCanvas');
 
