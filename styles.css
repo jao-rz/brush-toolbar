@@ -7,16 +7,38 @@
 
 .toolbar {
     display: flex;
-    flex-direction: column;
     height: 98vh;
-    justify-content: space-evenly;
     position: relative;
     top: 0;
     left: 0;
+    background-color: rgba(0, 0, 0, 0.63);
+    padding: 0px 10px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+ul li{
+    display: flex;
+    list-style: none;
+    height: 100%;
+    border-bottom: 1px solid white;
+    align-items: center;
+    justify-content: center;
+}
+
+ul li:last-child {
+    border-bottom: 0px;
 }
 
 img {
-    max-width: 75px;
+    width: 75px;
+    height: 75px;
 }
 
 .modalWrapper {
