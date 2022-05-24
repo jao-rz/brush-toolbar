@@ -11,12 +11,13 @@
     position: relative;
     top: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.63);
-    padding: 0px 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    box-shadow: 4px 3px 6px rgba(0, 0, 0, 0.7);
 }
 
 ul {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     padding: 0px;
@@ -27,14 +28,27 @@ ul li{
     display: flex;
     list-style: none;
     height: 100%;
-    border-bottom: 1px solid white;
+    Width: 100%;
     align-items: center;
     justify-content: center;
+    padding: 0px 10px;
+    box-sizing: border-box;
 }
 
-ul li:last-child {
-    border-bottom: 0px;
+li:hover {
+    background-color: rgba(255, 255, 255, 0.5);
 }
+
+ul li .imageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid white;
+}
+
+ul li:last-child .imageWrapper {border-bottom: none;}
 
 img {
     width: 75px;
