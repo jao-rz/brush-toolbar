@@ -1,6 +1,7 @@
 TO DO:
--Add style to the toolbar and icons.
+-Make it so that only one icon can be active at a time.
 
--Add style when the icons are active.
+-Make it so that colorPickerIcon can be deactivated by clicking 
+outside the modal. 
 
--Place the slider on the bottom and horizontally.
+-Make it so that modal can be hidden by clicking on any other icon.

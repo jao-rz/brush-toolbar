@@ -1,11 +1,18 @@
 const container = document.querySelector('.container');
-
-const colorPickerIcon = document.querySelector('img[src= "images/color-selection.png"]');
-colorPickerIcon.classList.add('colorPickerIcon');
-
+const icons = document.querySelectorAll('li');
+const colorPickerIcon = document.querySelector('.colorPickerIcon');
 const modalWrapper = document.querySelector('.modalWrapper')
-
 const modal = document.querySelector('.modal')
+
+let activeIcon = null;
+
+
+
+icons.forEach(icon => icon.addEventListener('click', iconIsActive));
+
+function iconIsActive() {
+  this.classList.toggle('iconIsActive')
+};
 
 modalWrapper.addEventListener('click', (e)=>{
   if(eventOutisdeModal(e) && modalIsActive()) {hideModal()};
