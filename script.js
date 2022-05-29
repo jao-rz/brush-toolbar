@@ -21,7 +21,7 @@ icons.forEach(icon => {
     
     function deactivateNonClickedIcons() {
       if (activeIcon != null && activeIcon != event.currentTarget) {
-      return activeIcon.classList.remove('iconIsActive');
+        return activeIcon.classList.remove('iconIsActive');
       }
     };
   });
@@ -36,26 +36,28 @@ modalWrapper.addEventListener('click', (event)=>{
 
 colorPickerIcon.addEventListener('click', toggleModal);
 
-function eventOutisdeModal(event) {
-  return modal.contains(event.target) == false;
-}
-
 function modalIsActive() {
   return modal.classList.contains('active');
 };
 
-function showModal() {
- return modal.classList.add('active');
-};
-
-function hideModal() {
-  return modal.classList.remove('active');
+function eventOutisdeModal(event) {
+  return modal.contains(event.target) == false;
 };
 
 function toggleModal() {
   if(modalIsActive()) {return hideModal()}
   else {return showModal()};
 };
+
+function hideModal() {
+  return modal.classList.remove('active');
+};
+
+function showModal() {
+ return modal.classList.add('active');
+};
+
+
 
 function deactivateColorPickerIcon() {
   colorPickerIcon.classList.remove('iconIsActive');
