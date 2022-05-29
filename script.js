@@ -7,46 +7,32 @@ const modal = document.querySelector('.modal')
 let activeIcon = null;
 
 icons.forEach(icon => {
-  icon.addEventListener('click', (e)=>{
+  icon.addEventListener('click', (event)=>{
 
     activateClickedIcon();
     deactivateNonClickedIcons();
-    activeIcon = e.currentTarget;
+    activeIcon = event.currentTarget;
 
     function activateClickedIcon() {
-      return icon.classList.toggle('activateClickedIcon')
+      return icon.classList.toggle('iconIsActive')
     };
     
     function deactivateNonClickedIcons() {
-      if (activeIcon != null && activeIcon != e.currentTarget) {
-        return activeIcon.classList.remove('activateClickedIcon');
+      if (activeIcon != null && activeIcon != event.currentTarget) {
+      return activeIcon.classList.remove('iconIsActive');
       }
     };
   });
-
-  /*icon.addEventListener('click', activateClickedIcon); 
-
-  icon.addEventListener('click', deactivateNonClickedIcons);
-
-  icon.addEventListener('click', (e)=>{
-    activeIcon = e.currentTarget;
-  });*/
-  
-
-
 }); 
 
-
-
-
-modalWrapper.addEventListener('click', (e)=>{
-  if(eventOutisdeModal(e) && modalIsActive()) {hideModal()};
+modalWrapper.addEventListener('click', (event)=>{
+  if(eventOutisdeModal(event) && modalIsActive()) {hideModal()};
 });
 
 colorPickerIcon.addEventListener('click', toggleModal);
 
-function eventOutisdeModal(e) {
-  return modal.contains(e.target) == false;
+function eventOutisdeModal(event) {
+  return modal.contains(event.target) == false;
 }
 
 function modalIsActive() {
