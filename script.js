@@ -13,6 +13,8 @@ icons.forEach(icon => {
     deactivateNonClickedIcons();
     activeIcon = event.currentTarget;
 
+    if(modalIsActive() && activeIcon != colorPickerIcon) {hideModal()};
+
     function activateClickedIcon() {
       return icon.classList.toggle('iconIsActive')
     };
@@ -26,7 +28,10 @@ icons.forEach(icon => {
 }); 
 
 modalWrapper.addEventListener('click', (event)=>{
-  if(eventOutisdeModal(event) && modalIsActive()) {hideModal()};
+  if(eventOutisdeModal(event) && modalIsActive()) {
+    hideModal();
+    deactivateColorPickerIcon();
+  };
 });
 
 colorPickerIcon.addEventListener('click', toggleModal);
@@ -50,6 +55,10 @@ function hideModal() {
 function toggleModal() {
   if(modalIsActive()) {return hideModal()}
   else {return showModal()};
+};
+
+function deactivateColorPickerIcon() {
+  colorPickerIcon.classList.remove('iconIsActive');
 };
 
 const colorPickerCanvas = document.querySelector('.colorPickerCanvas');
