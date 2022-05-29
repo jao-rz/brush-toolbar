@@ -6,13 +6,38 @@ const modal = document.querySelector('.modal')
 
 let activeIcon = null;
 
+icons.forEach(icon => {
+  icon.addEventListener('click', (e)=>{
+
+    activateClickedIcon();
+    deactivateNonClickedIcons();
+    activeIcon = e.currentTarget;
+
+    function activateClickedIcon() {
+      return icon.classList.toggle('activateClickedIcon')
+    };
+    
+    function deactivateNonClickedIcons() {
+      if (activeIcon != null && activeIcon != e.currentTarget) {
+        return activeIcon.classList.remove('activateClickedIcon');
+      }
+    };
+  });
+
+  /*icon.addEventListener('click', activateClickedIcon); 
+
+  icon.addEventListener('click', deactivateNonClickedIcons);
+
+  icon.addEventListener('click', (e)=>{
+    activeIcon = e.currentTarget;
+  });*/
+  
 
 
-icons.forEach(icon => icon.addEventListener('click', iconIsActive));
+}); 
 
-function iconIsActive() {
-  this.classList.toggle('iconIsActive')
-};
+
+
 
 modalWrapper.addEventListener('click', (e)=>{
   if(eventOutisdeModal(e) && modalIsActive()) {hideModal()};
